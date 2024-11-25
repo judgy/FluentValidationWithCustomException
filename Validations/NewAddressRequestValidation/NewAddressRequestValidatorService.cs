@@ -1,22 +1,19 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using FluentValidationWithCustomException.Models;
 using FluentValidationWithCustomException.Validations.Exception;
-using FluentValidationWithCustomException.Validations.Interfaces;
-using FluentValidationWithCustomException.Validations.Validators;
 
-namespace FluentValidationWithCustomException.Validations.InputValidationServices
+namespace FluentValidationWithCustomException.Validations.NewAddressRequestValidation
 {
-    public class NewAddressRequestValidationService : INewAddressRequestValidationService
+    public class NewAddressRequestValidatorService : INewAddressRequestValidatorService
     {
-        private readonly IValidator<NewAddressRequest> _validator;
+        private readonly IValidator<Models.NewAddressRequest> _validator;
 
-        public NewAddressRequestValidationService()
+        public NewAddressRequestValidatorService()
         {
             _validator = new NewAddressRequestValidator();
         }
 
-        public void ValidateAndThrow(NewAddressRequest request)
+        public void ValidateAndThrow(Models.NewAddressRequest request)
         {
             ValidationResult result = _validator.Validate(request);
             if (!result.IsValid)

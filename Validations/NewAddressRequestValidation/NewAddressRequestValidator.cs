@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using FluentValidationWithCustomException.Models;
 
-namespace FluentValidationWithCustomException.Validations.Validators;
+namespace FluentValidationWithCustomException.Validations.NewAddressRequestValidation;
 
-public class NewAddressRequestValidator : AbstractValidator<NewAddressRequest>
+public class NewAddressRequestValidator : AbstractValidator<Models.NewAddressRequest>
 {
     public NewAddressRequestValidator()
     {

@@ -1,8 +1,6 @@
 ﻿using FluentValidationWithCustomException.Models;
 using FluentValidationWithCustomException.Validations.Exception;
-using FluentValidationWithCustomException.Validations.InputValidationServices;
-using FluentValidationWithCustomException.Validations.Interfaces;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using FluentValidationWithCustomException.Validations.NewAddressRequestValidation;
 
 namespace FluentValidationWithCustomException
 {
@@ -10,8 +8,8 @@ namespace FluentValidationWithCustomException
     {
         static void Main(string[] args)
         {
-            INewAddressRequestValidationService validationService = 
-                new NewAddressRequestValidationService();
+            INewAddressRequestValidatorService validatorService = 
+                new NewAddressRequestValidatorService();
             var newAddressRequest = new NewAddressRequest
             {
                 Address = "123 Main St",
@@ -22,7 +20,7 @@ namespace FluentValidationWithCustomException
             };
             try
             {
-                validationService.ValidateAndThrow(newAddressRequest);
+                validatorService.ValidateAndThrow(newAddressRequest);
                 // Proceed with further processing
             }
             catch (InputValidationException ex)
